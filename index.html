@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(#84c5d43a, #def4f8);
+      }
+      .center {
+        width: 350px;
+        background: rgb(0, 0, 0);
+        border-radius: 20px;
+      }
+      input[type="text"] {
+        height: 60px;
+        width: 300px;
+        margin-top: 40px;
+        border-radius: 1px;
+        border: 1px solid #e1e7ea;
+        color: black;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: right;
+        padding-right: 20px;
+        box-shadow: rgba(151, 151, 184, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.027) 0px 18px 36px -18px inset;
+        background: linear-gradient(#dae6eb, #e1e9ec);
+      }
+      form .buttons {
+        width: 300px;
+        margin: 10px 25px 0 25px;
+        padding: 10px 0;
+      }
+      input[type="button"] {
+        width: 58px;
+        height: 55px;
+        margin: 5px;
+        font-size: 22px;
+        line-height: 55px;
+        border-radius: 3px;
+        border: 1px solid #d9d9d960;
+        background: linear-gradient(#d9d9d985, #bfbfbf);
+      }
+      input[type="button"]:hover {
+        transition: 3.5s;
+        background: linear-gradient(#bfbfbf, #d9d9d9);
+      }
+
+      input.hover-center-1 {
+        background-image: linear-gradient(0, #f56623, #f55515);
+        background-size: 0 0;
+        transition: 0.8s;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+        width: 275px;
+        margin: 5px 10px 5px 10px;
+        font-size: 45px;
+        color: black;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        background-color: rgba(207, 238, 31, 0.993);
+      }
+
+      input.hover-center-1:hover {
+        background-size: 100% 100%;
+        color: red;
+        border-radius: 10px;
+      }
+
+      input.hover-center-2 {
+        background-size: 0 0;
+        transition: 0.8s;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+        color: black;
+        background-color: rgba(207, 238, 31, 0.993);
+      }
+
+      input.hover-center-2:hover {
+        background-size: 100% 100%;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <form name="forms">
+        <input type="text" id="display" name="display" disabled />
+        <div class="buttons">
+          <input onclick="press(7)" type="button" value="7" />
+          <input onclick="press(8)" type="button" value="8" />
+          <input onclick="press(9)" type="button" value="9" />
+          <input onclick="press('/')" type="button" value="/" />
+          <input onclick="press(4)" type="button" value="4" />
+          <input onclick="press(5)" type="button" value="5" />
+          <input onclick="press(6)" type="button" value="6" />
+          <input onclick="press('*')" type="button" value="*" />
+          <input onclick="press(1)" type="button" value="1" />
+          <input onclick="press(2)" type="button" value="2" />
+          <input onclick="press(3)" type="button" value="3" />
+          <input onclick="press('-')" type="button" value="-" />
+          <input onclick="press('.')" type="button" value="." />
+          <input onclick="press(0)" type="button" value="0" />
+          <input onclick="press('+')" type="button" value="+" />
+          <input
+            onclick="pressClear('clear')"
+            class="hover-center-2"
+            type="button"
+            value="C"
+          />
+          <input
+            onclick="pressEval('=')"
+            class="hover-center-1"
+            type="button"
+            id="equal"
+            value="="
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  function press(N) {
+    
+    var res = (document.forms.display.value += N);
+  }
+
+  function pressClear(N) {                         // clear all display
+    var res = (document.forms.display.value = N);
+
+    if (res == "clear") {
+      document.forms.display.value = "";
+    }
+  }
+
+  function pressEval(N) {
+   var res =document.forms.display.value = eval(document.forms.display.value)
+ 
+  }
+
+
+</script>
